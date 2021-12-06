@@ -16,15 +16,19 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Product {
 
-	@NotBlank(message = "請選擇商品分類")
+
+//	@NotBlank(message = "請選擇商品分類")
+
 	@NotNull(message = "請選擇商品分類")
 	private Group group; // 商品分類
 
-	@NotBlank(message = "請選擇尺寸名稱")
+
+//	@NotBlank(message = "請選擇尺寸名稱")
 	@NotNull(message = "請選擇尺寸名稱")
 	private String size; // 尺寸名稱
 
-	@NotBlank(message = "請選擇級別")
+
+
 	@NotNull(message = "請選擇級別")
 	private Integer[] levelIds; // 級別id (多筆)
 
