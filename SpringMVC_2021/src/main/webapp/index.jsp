@@ -5,8 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	location.href = './mvc/product/';
+</script>
 </head>
 <body>
-	hello
+	Hello jsp
 </body>
 </html>
