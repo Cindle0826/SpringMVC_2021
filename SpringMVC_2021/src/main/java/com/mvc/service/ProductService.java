@@ -6,15 +6,20 @@ import java.util.List;
 import java.util.Map;
 
 import com.mvc.entity.products.Group;
+import com.mvc.entity.products.Level;
 import com.mvc.entity.products.Product;
+import com.mvc.entity.products.Size;
 
 public interface ProductService {
 	// 商品分類
 	Map<Integer, Group> groups = new LinkedHashMap<>();
-	// 商品列表
+	// 尺寸集合
+	Map<Integer, Size> sizes = new LinkedHashMap<>();
+	// 級別集合
+	Map<Integer, Level> levels = new LinkedHashMap<>();
+	// 商品集合(存放目前所有的商品資料的資料庫集合)
 	List<Product> products = new ArrayList<>();
-	
-	// 查詢所有資料
+	// 查詢所有商品資料
 	List<Product> query();
 	// 查詢單筆商品資料
 	Product get(String name);

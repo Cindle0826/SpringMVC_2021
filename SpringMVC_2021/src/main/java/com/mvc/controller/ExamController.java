@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mvc.entity.Exam;
 import com.mvc.entity.ExamName;
+import com.mvc.entity.ExamPay;
+import com.mvc.entity.ExamSlot;
 import com.mvc.validator.ExamValidator;
 
 @Controller
@@ -33,6 +35,19 @@ public class ExamController {
 		examNames.add(new ExamName("809", "1Z0-900"));
 		examNames.add(new ExamName("819", "1Z0-819"));
 	}
+	
+	private static List<ExamSlot> examSlots = new CopyOnWriteArrayList<>();
+	static {
+		examSlots.add(new ExamSlot("A","上午 "));
+		examSlots.add(new ExamSlot("B","中午 "));
+		examSlots.add(new ExamSlot("C","下午 "));
+	}
+	
+	private static List<ExamPay> examPays = new CopyOnWriteArrayList<>();
+	static {
+		examPays.add(new ExamPay(true, "已繳"));
+		examPays.add(new ExamPay(false, "未"));
+	}
 
 	@Autowired
 	private ExamValidator examValidator;
@@ -44,6 +59,8 @@ public class ExamController {
 		model.addAttribute("exams", exams); // 給資料呈現
 		model.addAttribute("action", "create");
 		model.addAttribute("examNames", examNames);
+		model.addAttribute("examSlots", examSlots);
+		model.addAttribute("examPays", examPays);
 		model.addAttribute("stat", getStat());
 		model.addAttribute("stat2", getStat2());
 
@@ -62,6 +79,8 @@ public class ExamController {
 			model.addAttribute("exams", exams); // 給資料呈現
 			model.addAttribute("action", "create");
 			model.addAttribute("examNames", examNames);
+			model.addAttribute("examSlots", examSlots);
+			model.addAttribute("examPays", examPays);
 			model.addAttribute("stat", getStat());
 			model.addAttribute("stat2", getStat2());
 			return "exam";
@@ -76,7 +95,9 @@ public class ExamController {
 		model.addAttribute("exam", optExam.isPresent() ? optExam.get() : new Exam()); // 給表單使用
 		model.addAttribute("exams", exams); // 給呈現使用資料
 		model.addAttribute("action", "update");
-
+		model.addAttribute("examNames", examNames);
+		model.addAttribute("examSlots", examSlots);
+		model.addAttribute("examPays", examPays);
 		model.addAttribute("stat", getStat());
 		model.addAttribute("stat2", getStat2());
 		return "exam";

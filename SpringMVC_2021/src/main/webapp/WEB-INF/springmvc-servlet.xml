@@ -51,6 +51,18 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-
+	
+	<!-- 例外處理配置 -->
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="defaultErrorView" value="error/base_errorpage"/>
+		<property name="exceptionMappings" >
+			<props>
+				<prop key="com.mvc.exception.AuthException">
+					error/auth_errorpage
+				</prop>
+			</props>
+		</property>
+			
+	</bean>
 
 </beans>
